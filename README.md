@@ -2,8 +2,9 @@
 Nmap Automation Tool (Python3)
 
 Step 1: 
-        cd 
-        mkdir ~/D3admapReports/
+       
+       A: cd 
+       B: mkdir ~/D3admapReports/
         
 step 2: 
         
