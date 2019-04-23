@@ -33,6 +33,8 @@ print("[5] Nmap Top Ports Scan")
 print("[6] Nmap FTP brute-force")
 print("[7] Nmap SMB brute-force")
 print("[8] Nmap SSH brute-force")
+print("[9] Nmap HTTP-Enumeration")
+print("[10] Nmap HTTP Web Server Spider")
 
 option = int(input("Enter number : \n"))
 
@@ -42,7 +44,7 @@ if option == 1:
 read Ip
 echo -n " Scan Name :"
 read Name
-sudo -S nmap -A -v -T4 $Ip -oN ~/D3admapReports/$Name
+sudo -S nmap -A -v -O -T4 $Ip -oN ~/D3admapReports/$Name
 echo "[+] Scan Complete [+]
 [*] Check Reports Dir. for Results [*]"
 """)
@@ -114,6 +116,26 @@ echo -n " Name for Scan : "
 read Name
 sudo -S nmap -p 22 --script ssh-brute --script-args userdb=users.lst,passdb=pass.lst \
   --script-args ssh-brute.timeout=4s $Ip -oN ~/D3admapReports/$Name
+echo "[+] Scan Complete [+]
+[*] Check Reports Dir. for Results [*]"
+""")
+
+elif option == 9:
+    os.system("""echo -n " Target : "
+read Ip
+echo -n " Name for Scan : "
+read Name
+sudo -S nmap -script http-enum $Ip -oN ~/D3admapReports/$Name
+echo "[+] Scan Complete [+]
+[*] Check Reports Dir. for Results [*]"
+""")
+
+elif option == 10:
+    os.system("""echo -n " Target : "
+read Ip
+echo -n " Name for Scan : "
+read Name
+sudo -S nmap –script http-sitemap-generator $Ip -oN ~/D3admapReports/$Name
 echo "[+] Scan Complete [+]
 [*] Check Reports Dir. for Results [*]"
 """)
